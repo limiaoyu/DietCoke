@@ -30,6 +30,7 @@ You can generate the mechanistic rationale with:
 $ python VL_captioning/mech_rationale_generate.py --knowledge_file=the/path/to/knowledge.json
 ```
 We provide the results in [MR_cap/long.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
+
 Notice that the MR_short.json is short_knowledge.json.
 
 ### Step4: Answer Fusion
