@@ -1,5 +1,5 @@
 # REACT
-This is the code related to "Rationale-based Ensemble of Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP24).
+This is the code related to "Rationale-based Ensemble of Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP'24).
 ![](https://github.com/limiaoyu/REACT/blob/main/overview.jpg)
 
 
