@@ -9,18 +9,37 @@ You can generate the short-form knowledge and long-form knowledge with:
 ```
 $ python VL_captioning/knowledge_generate.py  
 ```
-We provide the results in [VL_captioning/results/short_knowledge.json](https://github.com/limiaoyu/REACT/blob/main/VL_captioning/results/short_knowledge.json)
-### Testing
-You can provide which checkpoints you want to use for testing. We used the ones that performed best on the validation set during training (the best valiteration for 2D and 3D is shown at the end of each training). Note that @ will be replaced by the output directory for that config file. For example:
+We provide the results in [short/long_knowledge.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
+
+### Step2: Generate Answer Candidate
+You can generate the answer candidate with:
 ```
-$ python xmuda/test.py --cfg=configs/nuscenes/day_night/xmuda.yaml  @/model_2d_065000.pth @/model_3d_095000.pth
+$ python VL_captioning/candidate_generate.py --knowledge_file=the/path/to/knowledge.json
 ```
-You can also provide an absolute path without `@`. 
+We provide the results in [candidate_cap/short/long.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
+
+### Step3: Generate Rationales
+You can generate the automatic rationale with:
+```
+$ python VL_captioning/auto_rationale_generate.py --answer_file=the/path/to/candidate.json
+```
+We provide the results in [AR_cap/short/long.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
+
+You can generate the mechanistic rationale with:
+```
+$ python VL_captioning/mech_rationale_generate.py --knowledge_file=the/path/to/knowledge.json
+```
+We provide the results in [MR_cap/long.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
+Notice that the MR_short.json is short_knowledge.json.
+
+### Step4: Answer Fusion
+You can fuse the answer candidates with:
+```
+$ python VL_captioning/answer_fusion.py 
+```
+We provide the result in [final_ans.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
 
 ## Paper
-[Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation](https://dl.acm.org/doi/10.1145/3503161.3547990)
-
-**MM '22: Proceedings of the 30th ACM International Conference on Multimedia**
 
 If you find it helpful to your research, please cite as follows:
 ```
