@@ -1,6 +1,6 @@
-# Dual-Cross
+# REACT
 This is the code related to "Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation" (ACMMM 2022).
-![](https://github.com/limiaoyu/Dual-Cross/blob/main/Dual-Cross.jpg)
+![](https://github.com/limiaoyu/REACT/overview.jpg)
 ## Paper
 [Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation](https://dl.acm.org/doi/10.1145/3503161.3547990)
 
