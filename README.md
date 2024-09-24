@@ -1,5 +1,5 @@
 # REACT
-This is the code related to "Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation" (ACMMM 2022).
+This is the code related to "Rationale-based Ensemble of Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP24).
 ![](https://github.com/limiaoyu/REACT/blob/main/overview.jpg)
 ## Paper
 [Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation](https://dl.acm.org/doi/10.1145/3503161.3547990)
