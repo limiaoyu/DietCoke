@@ -1,125 +1,66 @@
-# Evaluation Code of Img2Prompt
+# Dual-Cross
+This is the code related to "Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation" (ACMMM 2022).
+![](https://github.com/limiaoyu/Dual-Cross/blob/main/Dual-Cross.jpg)
+## Paper
+[Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation](https://dl.acm.org/doi/10.1145/3503161.3547990)
 
-## From Images to Textual Prompts: Zero-shot VQA with Frozen Large Language Models
+**MM '22: Proceedings of the 30th ACM International Conference on Multimedia**
 
-
-<img src="Illustration.png" width="700">
-<img src="QuestionGeneration.png" width="700">
-<img src="Caption.png" width="700">
-
-This is the eveluation code for <a href="https://arxiv.org/abs/2212.10846">Img2Prompt-VQA paper</a>. We public it evaluation codes.
-
-### Demo
-We include an interactive demo [Colab notebook](https://colab.research.google.com/github/salesforce/LAVIS/blob/main/projects/img2prompt-vqa/img2prompt_vqa.ipynb)
-to show Img2Prompt-VQA inference workflow:
-1. Image-question matching: compute the relevancy score of the image patches wrt the question, and remove the generated noisy captions with low relevancy score.
-2. Image captioning: generate question-guided captions based on the relevancy score.
-3. Question Generation: generate questions based on the synthetic answers and captions.
-4. Large Language Model: Pre-trained lagre language models, e.g. OPT/GPT-3
-
-### Zero-Shot Evaluation
-<table>
-<thead>
-  <tr>
-    <th rowspan="2">Model</th>
-    <th rowspan="2">End-to-End Training?</th>
-    <th colspan="1">VQAv2 val</th>
-    <th colspan="1">VQAv2 test</th>
-    <th colspan="1">OK-VQA test</th>
-    <th colspan="1">AOK-VQA val</th>
-    <th colspan="1">AOK-VQA test</th>
-  </tr>
-
-</thead>
-<tbody>
-  <tr>
-    <td> Frozen-7B</td>
-    <td> ✓ </td> 
-    <td>29.5</td>
-    <td>-</td>
-    <td>5.9</td>
-    <td>-</td>
-<td>-</td>
-  </tr>
-<tr>
-    <td> Flamingo-9B </td>
-    <td> ✓</td> 
-    <td>-</td>
-    <td>51.8</td>
-    <td>44.7</td>
-    <td>-</td>
-<td>-</td>
-  </tr>
-  <tr>
-    <td> Flamingo-80B</td>
-    <td>✓</td> 
-    <td>-</td>
-    <td>56.3</td>
-    <td>50.6</td>
-    <td>-</td>
-<td>-</td>
-  </tr>
-  <tr>
-    <td> Img2Prompt-VQA-OPT<sub>13B</sub> </td>
-<td> x</td> 
-    <td>57.1</td>
-    <td>57.3 </td>
-    <td>39.9</td>
-    <td>33.3</td>
-<td>33.0</td>
-  </tr>
-  <tr>
-    <td> Img2Prompt-VQA-OPT<sub>30B</td>
-<td> x</td> 
-    <td>59.5</td>
-    <td>60.4 </td>
-    <td>41.8 </td>
-    <td>36.9</td>
-<td>36.0 </td>
-  </tr>
-  <tr>
-    <td> Img2Prompt-VQA-OPT<sub>66B</td>
-<td> x</td> 
-    <td>59.9</td>
-    <td>60.3 </td>
-    <td>43.2</td>
-    <td>38.7</td>
-<td>38.2</td>
-  </tr>
-  <tr>
-   <td> Img2Prompt-VQA-OPT<sub>175B</td>
-<td> x</td> 
-    <td>60.6</td>
-    <td>61.9</td>
-    <td>45.6</td>
-    <td>42.9</td>
-<td>40.7</td>
-  </tr>
-</tbody>
-</table>
-
-To reproduce these evaluation results of Img2LLM-VQA with different LLMs, you can follow the next steps:
-
-Firstly, you should download the generated caption question files from this [link](https://drive.google.com/drive/folders/1KbBrWTac5YuG_b6CVEWM4jYwpR_YbcEO?usp=sharing), and put them in the `caption_question_files` folder. For example, you can download 'okvqa_question.json', 'okvqa_caption.json' and 'okvqa_ans_to_cap_dict.json' for reproducing results of okvqa results.
-
-Then download the 2014_coco val anotation file in [link]([https://cocodataset.org/#download](url)), and put it in `annotation_new` folder
-
-Then you can run the shell in folder VL_captioning to reproduce results, e.g.
+If you find it helpful to your research, please cite as follows:
 ```
-$ ./run_okvqa.sh
-```
-
-
-### Citation
-If you find this code to be useful for your research, please consider citing.
-```
-@article{guo2022images,
-  title={From Images to Textual Prompts: Zero-shot VQA with Frozen Large Language Models},
-  author={Guo, Jiaxian and Li, Junnan and Li, Dongxu and Tiong, Anthony Meng Huat and Li, Boyang and Tao, Dacheng and Hoi, Steven CH},
-  journal={arXiv preprint arXiv:2212.10846},
+@inproceedings{li2022cross,
+  title={Cross-Domain and Cross-Modal Knowledge Distillation in Domain Adaptation for 3D Semantic Segmentation},
+  author={Li, Miaoyu and Zhang, Yachao and Xie, Yuan and Gao, Zuodong and Li, Cuihua and Zhang, Zhizhong and Qu, Yanyun},
+  booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
+  pages={3829--3837},
   year={2022}
 }
+```
+## Preparation (Refer to [xMUDA](https://github.com/valeoai/xmuda))
+### Prerequisites
+Tested with
+* PyTorch 1.4
+* CUDA 10.0
+* Python 3.8
+* [SparseConvNet](https://github.com/facebookresearch/SparseConvNet)
+* [nuscenes-devkit](https://github.com/nutonomy/nuscenes-devkit)
 
+### Installation
+As 3D network we use SparseConvNet. It requires to use CUDA 10.0 (it did not work with 10.1 when we tried). We advise to create a new conda environment for installation. PyTorch and CUDA can be installed, and SparseConvNet installed/compiled as follows:
+```
+$ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
+$ pip install --upgrade git+https://github.com/facebookresearch/SparseConvNet.git
 ```
 
+```
+$ cd xmuda
+$ pip install -ve .
+```
+The `-e` option means that you can edit the code on the fly.
+## Datasets
+### NuScenes
+Please download the Full dataset (v1.0) from the [NuScenes website](https://www.nuscenes.org) and extract it.
+
+You need to perform preprocessing to generate the data for Dual-Cross.
+
+Please edit the script `xmuda/data/nuscenes/preprocess.py` as follows and then run it.
+* `root_dir` should point to the root directory of the NuScenes dataset
+* `out_dir` should point to the desired output directory to store the pickle files
+
+## Usage
+### Training
+You can run the training with:
+```
+$ python xmuda/train_dual.py --cfg=configs/nuscenes/day_night/xmuda.yaml 
+```
+You can change the path OUTPUT_DIR in the config file `xmuda.yaml`.
+### Testing
+You can provide which checkpoints you want to use for testing. We used the ones that performed best on the validation set during training (the best valiteration for 2D and 3D is shown at the end of each training). Note that @ will be replaced by the output directory for that config file. For example:
+```
+$ python xmuda/test.py --cfg=configs/nuscenes/day_night/xmuda.yaml  @/model_2d_065000.pth @/model_3d_095000.pth
+```
+You can also provide an absolute path without `@`. 
+
+## Acknowledgements
+Note that this code borrows from the [xMUDA](https://github.com/valeoai/xmuda) repo, and uses code from [FDA](https://github.com/YanchaoYang/FDA).
 
