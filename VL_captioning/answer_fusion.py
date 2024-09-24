@@ -573,20 +573,20 @@ if __name__ == '__main__':
     parser.add_argument('--caption_file', default='../caption_question_files/aokvqa_val_caption.json')
     parser.add_argument('--question_file', default='../caption_question_files/aokvqa_val_question.json')
     parser.add_argument('--question_ppl_file', default=None)
-    parser.add_argument('--answer_cap', default='./output_aok/mistral_orig/no_inst/result/_aokvqa_mistral-7b_huggingcaps30_question30_questiontype_g_q.json')
-    parser.add_argument('--rationale_cap', default='./output_rationale_aok/grad_cam/caption/0514/rationale.json')
-    parser.add_argument('--rationale_cap_g', default='./output_rationale_aok/mistral_inst/caption/rationale.json')
-    parser.add_argument('--answer_know0', default='./output_aok_wk/one_sentence/result/_aokvqa_mistral-7b_huggingcaps30_question30_questiontype_g_q.json')
-    parser.add_argument('--rationale_know0', default='./output_knowledge_aok/mistral_inst/one_sentence/knowledge.json')
-    parser.add_argument('--rationale_know0_g', default='./output_rationale_aok/mistral_inst/know_0/rationale.json')
-    parser.add_argument('--answer_know1', default='./output_aok_wk/general_v1/result/_aokvqa_mistral-7b_huggingcaps30_question30_questiontype_g_q.json')
-    parser.add_argument('--rationale_know1', default='./output_rationale_aok/grad_cam/know1/0514/rationale.json')
-    parser.add_argument('--rationale_know1_g', default='./output_rationale_aok/mistral_inst/know_1/rationale.json')
+    parser.add_argument('--answer_cap', default='') # candidate_cap
+    parser.add_argument('--rationale_cap', default='')  # MR_cap
+    parser.add_argument('--rationale_cap_g', default='') # AR_cap
+    parser.add_argument('--answer_know0', default='') # candidate_short
+    parser.add_argument('--rationale_know0', default='') # MR_short
+    parser.add_argument('--rationale_know0_g', default='') # AR_short
+    parser.add_argument('--answer_know1', default='') # candidate_long
+    parser.add_argument('--rationale_know1', default='') # MR_long
+    parser.add_argument('--rationale_know1_g', default='') # AR_long
 
     parser.add_argument('--ans_dict_file', default='../caption_question_files/aokvqa_val_ans_to_cap_dict.json')
     parser.add_argument('--question_type', default='g_q', type=str)
 
-    parser.add_argument('--output_dir', default='./rationale_choose_aok/mistral_noinst/grad_cam/three_choice_plus1_v1/')
+    parser.add_argument('--output_dir', default='')
     parser.add_argument('--resume', action='store_true')
 
     parser.add_argument('--evaluate_direct', action='store_true')
