@@ -418,9 +418,9 @@ def evaluation(model, test_data,caption_dict,syn_question_dict,syn_answer_dict,a
         Task_Prompt = create_task_prompt(syn_question_queid, syn_ans_queid, syn_question_queid_next, config)
 
         Prompt = "Please answer the question with only one word based on the most reasonable rationale.\n"
-        Prompt += f"Rationale: 1.{cur_rationale_cap_g} And the context mentions \"{cur_rationale_cap}\".\n" \
-                  f"2.{cur_rationale_know0_g} And the background knowledge mentions \"{cur_rationale_know0}\".\n" \
-                  f"3.{cur_rationale_know1_g} And the background knowledge mentions \"{cur_rationale_know1}\".\n"
+        Prompt += f"Rationale: 1.{cur_rationale_cap_g} The context mentions \"{cur_rationale_cap}\".\n" \
+                  f"2.{cur_rationale_know0_g} The background knowledge mentions \"{cur_rationale_know0}\".\n" \
+                  f"3.{cur_rationale_know1_g} The background knowledge mentions \"{cur_rationale_know1}\".\n"
         Prompt += Task_Prompt + "Question:" + question
         Prompt += f" {cur_answer_cap} or {cur_answer_know0} or {cur_answer_know1}?\n"
         Prompt += "Answer:"
