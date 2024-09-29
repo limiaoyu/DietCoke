@@ -1,6 +1,6 @@
 # DietCoke
 This is the code related to "Diversify, Rationalize, and Combine: Ensembling Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP'24).
-![](https://github.com/limiaoyu/REACT/blob/main/overview.jpg)
+![](https://github.com/limiaoyu/REACT/blob/main/DietCoke.jpg)
 
 
 ## Usage
