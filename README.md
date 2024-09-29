@@ -1,5 +1,5 @@
-# REACT
-This is the code related to "Rationale-based Ensemble of Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP'24).
+# DietCoke
+This is the code related to "Diversify, Rationalize, and Combine: Ensembling Multiple QA Strategies for Zero-shot Knowledge-based VQA" (Findings of EMNLP'24).
 ![](https://github.com/limiaoyu/REACT/blob/main/overview.jpg)
 
 
