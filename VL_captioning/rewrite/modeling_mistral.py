@@ -255,7 +255,6 @@ class MistralAttention(nn.Module):
         bsz, q_len, _ = hidden_states.size()
 
         # grad_cam
-        # 在自回归生成过程中，query变化（上次生成的new_token），k,v用上次forward的k,v加上new_token生成的k,v
         query_states = self.q_proj(hidden_states)
         key_states = self.k_proj(hidden_states)
         value_states = self.v_proj(hidden_states)
@@ -301,8 +300,6 @@ class MistralAttention(nn.Module):
             attn_weights = attn_weights + attention_mask
 
         # upcast attention to fp32
-        # grad_cam
-        # 经典的attention实现操作
         attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)
         attn_weights = nn.functional.dropout(attn_weights, p=self.attention_dropout, training=self.training)
         attn_output = torch.matmul(attn_weights, value_states)
@@ -784,7 +781,6 @@ class MistralDecoderLayer(nn.Module):
         outputs = (hidden_states,)
 
         # grad_cam
-        # 添加hook捕捉到这一层的梯度
         if output_attentions:
             self_attn_weights.register_hook(self.save_attn_gradients)
             outputs += (self_attn_weights,)
@@ -1039,7 +1035,6 @@ class MistralModel(MistralPreTrainedModel):
         next_decoder_cache = None
 
         # grad_cam
-        # 把最后一层之前的所有层从计算图中剥离，节约内存
         index = 0
         for decoder_layer in self.layers:
             if index < 31:
@@ -1067,7 +1062,7 @@ class MistralModel(MistralPreTrainedModel):
                     position_ids=position_ids,
                     past_key_value=past_key_values,
                     output_attentions=output_attentions,
-                    use_cache=use_cache,  # 使用之前生成的Q, K, 所以才要retain map
+                    use_cache=use_cache,  
                 )
 
             hidden_states = layer_outputs[0]
@@ -1176,7 +1171,6 @@ class MistralForCausalLM(MistralPreTrainedModel):
         return_dict = return_dict if return_dict is not None else self.config.use_return_dict
 
         # decoder outputs consists of (dec_features, layer_state, dec_hidden, dec_attn)
-        # generate函数会多次调用forward，生成n个new token，就调用n次
         outputs = self.model(
             input_ids=input_ids,
             attention_mask=attention_mask,
