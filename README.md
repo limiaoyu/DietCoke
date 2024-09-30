@@ -46,7 +46,7 @@ If you find it helpful to your research, please cite as follows:
 ```
 @InProceedings{li2024rationale,
 author={Li, Miaoyu and Li, Haoxin and Du, Zilin and Li, Boyang},
-title={Rationale-based Ensemble of Multiple QA Strategies for Zero-shot Knowledge-based VQA},
+title={Diversify, Rationalize, and Combine: Ensembling Multiple QA Strategies for Zero-shot Knowledge-based VQA},
 booktitle = {Findings of the Conference on Empirical Methods in Natural Language Processing (Findings of EMNLP)},
 year = {2024}}
 ```
