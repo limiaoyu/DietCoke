@@ -1412,7 +1412,6 @@ class GenerationMixin:
         model_kwargs["cache_position"] = torch.arange(cur_len, device=input_ids.device)
 
         # grad_cam
-        # 在这里循环forward
         gradcam_list = []
         while self._has_unfinished_sequences(this_peer_finished, synced_gpus, device=input_ids.device):
             # prepare model inputs
@@ -1458,7 +1457,6 @@ class GenerationMixin:
             next_tokens = torch.argmax(next_tokens_scores, dim=-1)
 
             # grad_cam
-            # 反向传播next_token_logit，得到其关于attention_map的gradients（具体在layer里实现）
             # 1.forward 2.backward 3.get_gradients
             next_token_logit = next_token_logits[:, next_tokens.item()]
             next_token_logit.backward(retain_graph=True)
@@ -1491,7 +1489,7 @@ class GenerationMixin:
             unfinished_sequences = unfinished_sequences & ~stopping_criteria(input_ids, scores)
             this_peer_finished = unfinished_sequences.max() == 0
 
-        # grad_cam后处理
+        # grad_cam
         prompt_length = gradcam_list[0].shape[2]
         gradcam_list[0] = gradcam_list[0].sum(-1)
         gradcam_list_new = []
