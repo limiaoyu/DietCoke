@@ -425,6 +425,12 @@ def evaluation(model, test_data,caption_dict,syn_question_dict,syn_answer_dict,a
         Prompt += f" {cur_answer_cap} or {cur_answer_know0} or {cur_answer_know1}?\n"
         Prompt += "Answer:"
 
+        # Prompt for answering without rationales
+        # Prompt = f"Please choose the correct answer from the three answer candidates.\n"
+        # Prompt += Task_Prompt + "Question:" + question
+        # Prompt += f" {cur_answer_cap} or {cur_answer_know0} or {cur_answer_know1}?\n"
+        # Prompt += "Answer:"
+        
         encodeds = tokenizer(Prompt, return_tensors="pt")
         model_inputs = encodeds.to(device)
 
