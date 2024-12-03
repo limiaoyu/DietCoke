@@ -40,15 +40,22 @@ $ python VL_captioning/answer_fusion.py
 ```
 We provide the result in [final_ans.json](https://github.com/limiaoyu/REACT/tree/main/VL_captioning/results)
 
-## Paper
+## Citation
 
 If you find it helpful to your research, please cite as follows:
 ```
-@InProceedings{li2024rationale,
-author={Li, Miaoyu and Li, Haoxin and Du, Zilin and Li, Boyang},
-title={Diversify, Rationalize, and Combine: Ensembling Multiple QA Strategies for Zero-shot Knowledge-based VQA},
-booktitle = {Findings of the Conference on Empirical Methods in Natural Language Processing (Findings of EMNLP)},
-year = {2024}}
+@inproceedings{li-etal-2024-diversify,
+    title = "Diversify, Rationalize, and Combine: Ensembling Multiple {QA} Strategies for Zero-shot Knowledge-based {VQA}",
+    author = "Li, Miaoyu  and
+      Li, Haoxin  and
+      Du, Zilin  and
+      Li, Boyang",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    pages = "1552--1566"
+}
 ```
 
 ## Acknowledgements
